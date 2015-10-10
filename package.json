@@ -1,0 +1,29 @@
+{
+  "name": "eshell",
+  "version": "0.1.0",
+  "description": "A tool for build a shell project",
+  "main": "index.js",
+  "bin": {
+      "eshell": "./bin/eshell.js"
+   },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:yuwancumian/eshell.git"
+  },
+  "keywords": [
+    "personal",
+    "tools"
+  ],
+  "author": "yuwancumian",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yuwancumian/eshell/issues"
+  },
+  "homepage": "https://github.com/yuwancumian/eshell",
+  "dependencies": {
+    "shelljs": "^0.5.3"
+  }
+}
