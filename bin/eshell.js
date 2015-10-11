@@ -3,7 +3,7 @@ require('shelljs/global');
 var pkg = require('../lib/package.json');
 
 var shellScript = process.argv[2];
-var scriptName = process.argv[3];
+var scriptName = process.argv[3] || process.argv[2];
 
 
 mkdir('-p',shellScript);
