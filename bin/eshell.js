@@ -9,9 +9,11 @@ var scriptName = process.argv[3] || process.argv[2];
 mkdir('-p',shellScript);
 cd(shellScript);
 var pkg = fs.readFileSync(path.join(__dirname,'package.json'),'utf-8');
+var giti = fs.readFileSync(path.join(__dirname,'gitignore'),'utf-8');
 pkg = pkg.replace(/shellscript/g,shellScript);
 pkg = pkg.replace(/scriptname/g,scriptName);
-fs.writeFileSync('package.json',pkg)
+fs.writeFileSync('package.json',pkg);
+fs.writeFileSync('.gitignore',giti);
 "### Readme".to('README.md')
 
 exec('git init')
