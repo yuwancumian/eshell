@@ -14,9 +14,10 @@ pkg = pkg.replace(/shellscript/g,shellScript);
 pkg = pkg.replace(/scriptname/g,scriptName);
 fs.writeFileSync('package.json',pkg);
 fs.writeFileSync('.gitignore',giti);
-"### Readme".to('README.md')
+"### Readme".to('README.md');
 
-exec('git init')
+exec('git init');
+exec('git remote add origin git@github.com:yuwancumian/'+ shellScript + '.git');
 
 
 mkdir('-p','bin');
