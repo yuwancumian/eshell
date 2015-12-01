@@ -2,19 +2,57 @@
 require('shelljs/global');
 var fs = require('fs');
 var path = require('path');
-
+var async = require('async');
+var series = [];
+var pkg = '';
+var ignore = '';
 var shellScript = process.argv[2];
 var scriptName = process.argv[3] || process.argv[2];
 
 mkdir('-p',shellScript);
 cd(shellScript);
-var pkg = fs.readFileSync(path.join(__dirname,'package.json'),'utf-8');
-var giti = fs.readFileSync(path.join(__dirname,'gitignore'),'utf-8');
-pkg = pkg.replace(/shellscript/g,shellScript);
-pkg = pkg.replace(/scriptname/g,scriptName);
-fs.writeFileSync('package.json',pkg);
-fs.writeFileSync('.gitignore',giti);
 "### Readme".to('README.md');
+
+function readPkg(cb) {
+    fs.readFile(path.join(__dirname,'package.json'),'utf-8',function(err,data){
+        if (err) throw err;
+        pkg += data;
+        cb(null,null);
+    })
+}
+
+function readIgnore(cb) {
+    fs.readFile(path.join(__dirname,'gitignore'),'utf-8',function(err,data){
+        if (err) throw err;
+        ignore += data;
+        cb(null,null)
+    })
+}
+
+function replaceTxt(cb){
+    pkg = pkg.replace(/shellscript/g,shellScript);
+    pkg = pkg.replace(/scriptname/g,scriptName);
+    cb(null,null)
+}
+
+function writePkg(cb){
+    fs.writeFile('package.json',pkg,function(err){
+        if (err) throw err;
+    }) 
+    fs.writeFile('.gitignore',ignore,function(err){
+        if (err) throw err;
+    })
+    cb(null,null)
+}
+
+series.push(readPkg);
+series.push(readIgnore);
+series.push(replaceTxt);
+series.push(writePkg);
+
+async.series(series,function(err,cb){
+    if (err) throw err;
+});
 
 exec('git init');
 exec('git remote add origin git@github.com:yuwancumian/'+ shellScript + '.git');
