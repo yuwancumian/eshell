@@ -13,7 +13,6 @@ if (!shellScript){
     throw 'Path must be assigned!'
 }
 
-console.log("123")
 mkdir('-p',shellScript);
 cd(shellScript);
 "### Readme".to('README.md');
@@ -69,4 +68,3 @@ cd('bin');
 "#!/usr/bin/env node\n".to(scriptName + '.js');
 "require('shelljs/global');".toEnd(scriptName + '.js');
 echo(shellScript + ' was created!');
-    console.log("Path must be ")
