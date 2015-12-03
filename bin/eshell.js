@@ -36,6 +36,7 @@ function replaceTxt(cb){
 }
 
 function writePkg(cb){
+    cd('..')
     fs.writeFile('package.json',pkg,function(err){
         if (err) throw err;
     }) 
