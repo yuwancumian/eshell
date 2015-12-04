@@ -9,11 +9,10 @@ var ignore = '';
 var shellScript = process.argv[2];
 var scriptName = process.argv[3] || process.argv[2];
 
-if (!shellScript){
+if (!shellScript || shellScript === ''){
     throw 'Path must be assigned!'
 }
 
-console.log("123")
 mkdir('-p',shellScript);
 cd(shellScript);
 "### Readme".to('README.md');
