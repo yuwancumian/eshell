@@ -1,4 +1,5 @@
-### A tool for build a shell project easily
+### A tool for build a shell project quickly
 
 #### Usage 
-``` npm install eshell ```
+``` npm install eshell -g ```
+``` eshell script_dir script_name ```
