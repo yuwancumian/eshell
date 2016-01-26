@@ -40,12 +40,13 @@ function replaceTxt(cb){
 }
 
 function writePkg(cb){
-    cd('..')
     fs.writeFile('package.json',pkg,function(err){
         if (err) throw err;
+        console.log("Package.json was created!");
     }) 
     fs.writeFile('.gitignore',ignore,function(err){
         if (err) throw err;
+        console.log("Gitignore was created!");
     })
     cb(null,null)
 }
@@ -63,8 +64,4 @@ exec('git init');
 exec('git remote add origin git@github.com:yuwancumian/'+ shellScript + '.git');
 
 
-mkdir('-p','bin');
-cd('bin');
 "#!/usr/bin/env node\n".to(scriptName + '.js');
-"require('shelljs/global');".toEnd(scriptName + '.js');
-echo(shellScript + ' was created!');
