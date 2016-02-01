@@ -26,5 +26,13 @@
   "dependencies": {
     "async": "^1.5.0",
     "shelljs": "^0.5.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "devDependencies": {
+    "cz-conventional-changelog": "^1.1.5"
   }
 }
