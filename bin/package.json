@@ -1,28 +1,28 @@
 {
-  "name": "shellscript",
+  "name": "{{shellscript}}",
   "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "bin": {
-      "scriptname": "./scriptname.js"
+      "{{scriptname}}": "./{{scriptname}}.js"
    },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:yuwancumian/shellscript.git"
+    "url": "git@github.com:{{username}}/{{shellscript}}.git"
   },
   "keywords": [
     "keyword1",
     "keyword2"
   ],
-  "author": "yuwancumian",
+  "author": "{{username}}",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yuwancumian/shellscript/issues"
+    "url": "https://github.com/{{username}}/{{shellscript}}/issues"
   },
-  "homepage": "https://github.com/yuwancumian/shellscript",
+  "homepage": "https://github.com/{{username}}/{{shellscript}}",
   "dependencies": {
   }
 }

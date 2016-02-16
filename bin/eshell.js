@@ -3,15 +3,21 @@ require('shelljs/global');
 var fs = require('fs');
 var path = require('path');
 var async = require('async');
+var handlebars = require('handlebars');
+var argv = require('yargs').argv;
+
 var series = [];
 var pkg = '';
 var ignore = '';
 var shellScript = process.argv[2];
 var scriptName = process.argv[3] || process.argv[2];
 
-if (!shellScript || shellScript === ''){
-    throw 'Path must be assigned!'
-}
+/*if (!shellScript || shellScript === ''){*/
+    //throw 'Path must be assigned!'
+/*}*/
+console.log(argv._)
+
+return;
 
 mkdir('-p',shellScript);
 cd(shellScript);
@@ -34,6 +40,9 @@ function readIgnore(cb) {
 }
 
 function replaceTxt(cb){
+    var context = {
+        
+    }
     pkg = pkg.replace(/shellscript/g,shellScript);
     pkg = pkg.replace(/scriptname/g,scriptName);
     cb(null,null)

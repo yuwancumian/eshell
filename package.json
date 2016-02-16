@@ -25,7 +25,9 @@
   "homepage": "https://github.com/yuwancumian/eshell",
   "dependencies": {
     "async": "^1.5.0",
-    "shelljs": "^0.5.3"
+    "handlebars": "^4.0.5",
+    "shelljs": "^0.5.3",
+    "yargs": "^4.1.0"
   },
   "config": {
     "commitizen": {
