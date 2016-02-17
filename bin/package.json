@@ -1,28 +1,28 @@
 {
-  "name": "{{shellscript}}",
+  "name": "{{projectName}}",
   "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "bin": {
-      "{{scriptname}}": "./{{scriptname}}.js"
+    "{{scriptName}}": "./{{scriptName}}.js"
    },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:{{username}}/{{shellscript}}.git"
+    "url": "git@github.com:{{userName}}/{{projectName}}.git"
   },
   "keywords": [
     "keyword1",
     "keyword2"
   ],
-  "author": "{{username}}",
+  "author": "{{userName}}",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/{{username}}/{{shellscript}}/issues"
+    "url": "https://github.com/{{userName}}/{{projectName}}/issues"
   },
-  "homepage": "https://github.com/{{username}}/{{shellscript}}",
+  "homepage": "https://github.com/{{userName}}/{{projectName}}",
   "dependencies": {
   }
 }

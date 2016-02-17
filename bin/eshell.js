@@ -3,26 +3,32 @@ require('shelljs/global');
 var fs = require('fs');
 var path = require('path');
 var async = require('async');
-var handlebars = require('handlebars');
-var argv = require('yargs').argv;
+var Handlebars = require('handlebars');
+var argv = require('yargs')
+           .alias('s','scriptName')
+           .alias('u','userName')
+           .default({u: 'yourGithubUserName'})
+           .usage('Usage: eshell [options]')
+           .help('h','')
+           .argv;
 
 var series = [];
 var pkg = '';
+var replace_pkg = '';
 var ignore = '';
-var shellScript = process.argv[2];
-var scriptName = process.argv[3] || process.argv[2];
+var projectName = process.argv[2];
+var scriptName = argv.s || process.argv[2];
 
-/*if (!shellScript || shellScript === ''){*/
-    //throw 'Path must be assigned!'
-/*}*/
-console.log(argv._)
+if (!projectName  || projectName === ''){
+    throw 'Project\'s name must be assigned!'
+}
 
-return;
 
-mkdir('-p',shellScript);
-cd(shellScript);
+mkdir('-p',projectName);
+cd(projectName);
 "### Readme".to('README.md');
 
+//读取 package.json 的模板
 function readPkg(cb) {
     fs.readFile(path.join(__dirname,'package.json'),'utf-8',function(err,data){
         if (err) throw err;
@@ -31,6 +37,8 @@ function readPkg(cb) {
     })
 }
 
+
+// 读取.gitignore 文件
 function readIgnore(cb) {
     fs.readFile(path.join(__dirname,'gitignore'),'utf-8',function(err,data){
         if (err) throw err;
@@ -39,17 +47,27 @@ function readIgnore(cb) {
     })
 }
 
+// 渲染模板
 function replaceTxt(cb){
+    var source = pkg;
+    //初始化指定的模板引擎
+    var template = Handlebars.compile(source);
+
+    //初始化模板上下文
     var context = {
-        
+        projectName: projectName,
+        userName: argv.u,
+        scriptName: argv.s
     }
-    pkg = pkg.replace(/shellscript/g,shellScript);
-    pkg = pkg.replace(/scriptname/g,scriptName);
+
+    //用模板引擎执行上下文
+    replace_pkg = template(context);
     cb(null,null)
 }
 
+//写入文件
 function writePkg(cb){
-    fs.writeFile('package.json',pkg,function(err){
+    fs.writeFile('package.json',replace_pkg,function(err){
         if (err) throw err;
         console.log("Package.json was created!");
     }) 
@@ -70,7 +88,7 @@ async.series(series,function(err,cb){
 });
 
 exec('git init');
-exec('git remote add origin git@github.com:yuwancumian/'+ shellScript + '.git');
+exec('git remote add origin git@github.com:yuwancumian/'+ projectName + '.git');
 
 
 "#!/usr/bin/env node\n".to(scriptName + '.js');
