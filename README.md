@@ -2,11 +2,7 @@
 
 ### [Install](https://github.com/yuwancumain/eshell#install)
 
-`$ git clone git@github.com:yuwancumian/eshell.git`
-
-`$ cd eshell`
-
-`$ npm install`
+` $ npm install -g eshell`
 
 ### [Example](https://github.com/yuwancumain/eshell#)
 
