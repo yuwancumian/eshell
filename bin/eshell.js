@@ -57,7 +57,7 @@ function replaceTxt(cb){
     var context = {
         projectName: projectName,
         userName: argv.u,
-        scriptName: argv.s
+        scriptName: scriptName
     }
 
     //用模板引擎执行上下文
@@ -91,4 +91,4 @@ exec('git init');
 exec('git remote add origin git@github.com:yuwancumian/'+ projectName + '.git');
 
 
-"#!/usr/bin/env node\n".to(scriptName + '.js');
+"#!/usr/bin/env node\n".to('index.js');
