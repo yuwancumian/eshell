@@ -2,7 +2,6 @@
 require('shelljs/global');
 var fs = require('fs');
 var path = require('path');
-var async = require('async');
 var Handlebars = require('handlebars');
 var argv = require('yargs')
            .alias('s','scriptName')
