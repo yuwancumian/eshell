@@ -27,25 +27,35 @@ mkdir('-p',projectName);
 cd(projectName);
 "### Readme".to('README.md');
 
-function copyFile(file){
+function readFile(file){
     return new Promise(function(resolve,reject){
         fs.readFile(file,function(err,data){
             if(err){
                 reject(err)
             } else {
                 resolve(data)
-                console.log(data)
             }
         })
     })
 }
 
-copyFile(path.join(__dirname,'package.json')
-function writeFile(data,file){
+readFile(path.join(__dirname,'package.json'))
+.then(function(data){
+    console.log(data.toString())
+    console.log('123123')
+})
+function writeFile(file,data){
     return new Promise(function(resolve,reject){
         fs.writeFile(file,data,function(err,data){
             if (err) throw err;
-            console.log("Package.json was created!");
+            console.log("was created!");
         })
     })
 }
+
+// readFile('test1.txt').then(writeFile('test1_copy.txt'))
+readFile(path.join(__dirname,'package.json')).then(function(data){
+    writeFile('test1_copy.txt',data)
+}).catch(function(err){
+    console.log(err);
+})

@@ -29,7 +29,7 @@ cd(projectName);
 
 //读取 package.json 的模板
 function readPkg(cb) {
-    fs.readFile(path.join(__dirname,'package.json'),'utf-8',function(err,data){
+    fs.readFile(path.join(__dirname,'package.json')),'utf-8',function(err,data){
         if (err) throw err;
         pkg += data;
         cb(null,null);
@@ -69,7 +69,7 @@ function writePkg(cb){
     fs.writeFile('package.json',replace_pkg,function(err){
         if (err) throw err;
         console.log("Package.json was created!");
-    }) 
+    })
     fs.writeFile('.gitignore',ignore,function(err){
         if (err) throw err;
         console.log("Gitignore was created!");
