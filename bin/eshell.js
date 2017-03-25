@@ -7,7 +7,7 @@ var Handlebars = require('handlebars');
 var argv = require('yargs')
            .alias('s','scriptName')
            .alias('u','userName')
-           .default({u: 'yourGithubUserName'})
+           .default({u: 'yuwancumian'})
            .usage('Usage: eshell [options]')
            .help('h','')
            .argv;
@@ -56,7 +56,7 @@ function replaceTxt(cb){
     //初始化模板上下文
     var context = {
         projectName: projectName,
-        userName: argv.u,
+        userName: argv.u || 'yuwancumian',
         scriptName: scriptName
     }
 
